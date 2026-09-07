@@ -25,9 +25,12 @@
 
       <section id="padScreen" class="pad-screen hidden">
         <div id="engageZone" class="engage-zone">
-          <span class="engage-label">ここを指で押さえたまま<br>スマホを傾けて操作</span>
+          <span class="engage-label">ここを指で押さえたまま<br>傾けたり動かしたりして操作</span>
         </div>
-        <div id="debugReadout" class="debug-readout">α: -- β: -- γ: --</div>
+        <div id="debugReadout" class="debug-readout">
+          <div>回転 α: -- β: -- γ: --</div>
+          <div>並進 x: -- y: -- z: --</div>
+        </div>
 
         <div class="buttons">
           <button id="leftClick" class="clickbtn">左クリック</button>
@@ -37,40 +40,81 @@
     </main>
 
     <div id="settingsPanel" class="settings-panel hidden">
-      <h2>設定</h2>
-      <label class="field">
-        <span>感度: <span id="sensitivityValue"></span></span>
-        <input type="range" id="sensitivity" min="1" max="15" step="0.5">
-      </label>
-      <label class="field">
-        <span>左右(X)に使う軸</span>
-        <select id="axisX">
-          <option value="alpha">α (Z軸回転)</option>
-          <option value="beta">β (X軸回転)</option>
-          <option value="gamma">γ (Y軸回転)</option>
-        </select>
-      </label>
-      <label class="field">
-        <span>上下(Y)に使う軸</span>
-        <select id="axisY">
-          <option value="alpha">α (Z軸回転)</option>
-          <option value="beta">β (X軸回転)</option>
-          <option value="gamma">γ (Y軸回転)</option>
-        </select>
-      </label>
-      <label class="switch">
-        <input type="checkbox" id="invertX">
-        <span>左右を反転</span>
-      </label>
-      <label class="switch">
-        <input type="checkbox" id="invertY">
-        <span>上下を反転</span>
-      </label>
-      <p class="hint">
-        画面下の「α β γ」表示を見ながら、実際にヨー/ピッチ/ロールさせて
-        どの値が一番動くか確認すると、この端末に合った軸を選べます。
-      </p>
-      <button id="closeSettings" class="secondary">閉じる</button>
+      <div class="settings-scroll">
+        <h2>設定</h2>
+
+        <h3 class="section-title">回転(傾け)</h3>
+        <label class="field">
+          <span>感度: <span id="sensitivityValue"></span></span>
+          <input type="range" id="sensitivity" min="1" max="15" step="0.5">
+        </label>
+        <label class="field">
+          <span>左右(X)に使う軸</span>
+          <select id="axisX">
+            <option value="alpha">α (Z軸回転)</option>
+            <option value="beta">β (X軸回転)</option>
+            <option value="gamma">γ (Y軸回転)</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>上下(Y)に使う軸</span>
+          <select id="axisY">
+            <option value="alpha">α (Z軸回転)</option>
+            <option value="beta">β (X軸回転)</option>
+            <option value="gamma">γ (Y軸回転)</option>
+          </select>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="invertX">
+          <span>左右を反転</span>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="invertY">
+          <span>上下を反転</span>
+        </label>
+
+        <h3 class="section-title">平行移動(スライド)</h3>
+        <label class="switch">
+          <input type="checkbox" id="enableTranslation">
+          <span>平行移動を使う</span>
+        </label>
+        <label class="field">
+          <span>感度: <span id="tSensitivityValue"></span></span>
+          <input type="range" id="tSensitivity" min="200" max="6000" step="100">
+        </label>
+        <label class="field">
+          <span>左右(X)に使う軸</span>
+          <select id="axisTX">
+            <option value="x">x (画面の左右方向)</option>
+            <option value="y">y (画面の上下方向)</option>
+            <option value="z">z (画面に垂直な方向)</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>上下(Y)に使う軸</span>
+          <select id="axisTY">
+            <option value="x">x (画面の左右方向)</option>
+            <option value="y">y (画面の上下方向)</option>
+            <option value="z">z (画面に垂直な方向)</option>
+          </select>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="invertTX">
+          <span>左右を反転</span>
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="invertTY">
+          <span>上下を反転</span>
+        </label>
+
+        <p class="hint">
+          画面下のライブ表示を見ながら実際に傾けたり動かしたりして、どの値が
+          一番反応するかで軸を選んでください。平行移動は素早くスライドさせた
+          分だけ反応し、止まっていれば自然に収まる(ドリフトしない)方式です。
+          効きが弱い/強すぎる場合は平行移動の感度を調整してください。
+        </p>
+        <button id="closeSettings" class="secondary">閉じる</button>
+      </div>
     </div>
   </div>
   <script src="app.js"></script>

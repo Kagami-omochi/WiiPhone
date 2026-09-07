@@ -1,0 +1,18 @@
+{
+  "name": "phone-gyro-mouse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "スマホの傾き(ジャイロセンサー)でPCのマウスカーソルを操作するツール",
+  "main": "server.js",
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "selfsigned": "^5.5.0",
+    "ws": "^8.21.3"
+  }
+}

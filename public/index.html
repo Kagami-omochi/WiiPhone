@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Gyro Mouse</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="status">
+        <span id="dot" class="dot"></span>
+        <span id="statusText">未接続</span>
+      </div>
+      <button id="settingsBtn" class="iconbtn" aria-label="設定">⚙</button>
+    </header>
+
+    <main>
+      <section id="startScreen" class="start-screen">
+        <p class="lead">スマホを傾けてPCのカーソルを動かします。</p>
+        <button id="startBtn" class="primary">開始する</button>
+        <p class="hint">タップ後、センサーの使用許可を求められることがあります。</p>
+      </section>
+
+      <section id="padScreen" class="pad-screen hidden">
+        <div id="engageZone" class="engage-zone">
+          <span class="engage-label">ここを指で押さえたまま<br>スマホを傾けて操作</span>
+        </div>
+        <div id="debugReadout" class="debug-readout">α: -- β: -- γ: --</div>
+
+        <div class="buttons">
+          <button id="leftClick" class="clickbtn">左クリック</button>
+          <button id="rightClick" class="clickbtn">右クリック</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="settingsPanel" class="settings-panel hidden">
+      <h2>設定</h2>
+      <label class="field">
+        <span>感度: <span id="sensitivityValue"></span></span>
+        <input type="range" id="sensitivity" min="1" max="15" step="0.5">
+      </label>
+      <label class="field">
+        <span>左右(X)に使う軸</span>
+        <select id="axisX">
+          <option value="alpha">α (Z軸回転)</option>
+          <option value="beta">β (X軸回転)</option>
+          <option value="gamma">γ (Y軸回転)</option>
+        </select>
+      </label>
+      <label class="field">
+        <span>上下(Y)に使う軸</span>
+        <select id="axisY">
+          <option value="alpha">α (Z軸回転)</option>
+          <option value="beta">β (X軸回転)</option>
+          <option value="gamma">γ (Y軸回転)</option>
+        </select>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="invertX">
+        <span>左右を反転</span>
+      </label>
+      <label class="switch">
+        <input type="checkbox" id="invertY">
+        <span>上下を反転</span>
+      </label>
+      <p class="hint">
+        画面下の「α β γ」表示を見ながら、実際にヨー/ピッチ/ロールさせて
+        どの値が一番動くか確認すると、この端末に合った軸を選べます。
+      </p>
+      <button id="closeSettings" class="secondary">閉じる</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

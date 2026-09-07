@@ -1,0 +1,226 @@
+:root {
+  --bg: #14161c;
+  --panel: #1c1f27;
+  --line: #23262f;
+  --text: #e9eaee;
+  --muted: #8a8d99;
+  --accent: #7c8fff;
+  --accent-dim: #4b5591;
+  --warn: #e8735a;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Hiragino Sans", "Noto Sans JP", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  overscroll-behavior: none;
+  touch-action: none;
+  user-select: none;
+}
+
+.app {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  flex: 0 0 auto;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--warn);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.dot.connected {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.iconbtn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 21px;
+  padding: 6px 8px;
+  line-height: 1;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.start-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+  gap: 20px;
+}
+.lead {
+  font-size: 19px;
+  line-height: 1.7;
+  max-width: 26ch;
+  margin: 0;
+}
+.hint {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 28ch;
+  margin: 0;
+  line-height: 1.6;
+}
+
+button.primary {
+  background: var(--accent);
+  color: #10121a;
+  border: none;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 15px 34px;
+  border-radius: 999px;
+}
+button.primary:disabled { opacity: 0.5; }
+
+button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+  font-size: 15px;
+  padding: 11px 22px;
+  border-radius: 999px;
+  margin-top: 10px;
+}
+
+.pad-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.hidden { display: none !important; }
+
+.engage-zone {
+  position: relative;
+  flex: 1;
+  margin: 16px 16px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #1a1d26, #16181f);
+  transition: background 0.12s ease, border-color 0.12s ease;
+  touch-action: none;
+}
+.engage-zone.active {
+  border-color: var(--accent-dim);
+  background: linear-gradient(180deg, #20243a, #191c27);
+}
+.engage-label {
+  color: var(--muted);
+  font-size: 15px;
+  text-align: center;
+  line-height: 1.8;
+  padding: 0 40px;
+}
+
+.debug-readout {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+
+.buttons {
+  display: flex;
+  gap: 1px;
+  background: var(--line);
+  flex: 0 0 auto;
+}
+.clickbtn {
+  flex: 1;
+  padding: 22px 0;
+  background: var(--panel);
+  color: var(--text);
+  border: none;
+  font-size: 16px;
+}
+.clickbtn:active { background: #262a36; }
+
+.settings-panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 11, 15, 0.94);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 30px 24px;
+}
+.settings-panel h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.field input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+.field select {
+  width: 100%;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+}
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+}
+.switch input { width: 18px; height: 18px; accent-color: var(--accent); }
